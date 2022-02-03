@@ -1,11 +1,7 @@
-﻿using System;
+﻿using PieShop.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-//using BethanysPieShop.Models;
-using PieShop.Models;
 
-namespace BethanysPieShop.ViewModels
+namespace PieShop.ViewModels
 {
     public class HomeViewModel
     {
