@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace PieShop.Controllers
 {
+    /// <summary>
+    /// Get all pies
+    /// </summary>
     public class PieController : Controller
     {
         private readonly IPieRepository _pieRepository;
@@ -30,6 +33,7 @@ namespace PieShop.Controllers
         //    return View(piesListViewModel);
         //}
 
+        #region List
         public ViewResult List(string category)
         {
             IEnumerable<Pie> pies;
@@ -53,8 +57,9 @@ namespace PieShop.Controllers
                 CurrentCategory = currentCategory
             });
         }
+        #endregion
 
-
+        #region Details
         public IActionResult Details(int id)
         {
             var pie = _pieRepository.GetPieById(id);
@@ -63,5 +68,6 @@ namespace PieShop.Controllers
 
             return View(pie);
         }
+        #endregion
     }
 }

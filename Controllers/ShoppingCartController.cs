@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace PieShop.Controllers
 {
+    /// <summary>
+    /// All details of Shopping cart
+    /// </summary>
     public class ShoppingCartController : Controller
     {
         private readonly IPieRepository _pieRepository;
@@ -16,6 +19,7 @@ namespace PieShop.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        #region Index
         public ViewResult Index()
         {
             var items = _shoppingCart.GetShoppingCartItems();
@@ -29,7 +33,9 @@ namespace PieShop.Controllers
 
             return View(shoppingCartViewModel);
         }
+        #endregion
 
+        #region AddToShoppingCart
         public RedirectToActionResult AddToShoppingCart(int pieId)
         {
             var selectedPie = _pieRepository.AllPies.FirstOrDefault(p => p.PieId == pieId);
@@ -40,7 +46,9 @@ namespace PieShop.Controllers
             }
             return RedirectToAction("Index");
         }
+        #endregion
 
+        #region RemoveFromShoppingCart
         public RedirectToActionResult RemoveFromShoppingCart(int pieId)
         {
             var selectedPie = _pieRepository.AllPies.FirstOrDefault(p => p.PieId == pieId);
@@ -51,5 +59,6 @@ namespace PieShop.Controllers
             }
             return RedirectToAction("Index");
         }
+        #endregion
     }
 }

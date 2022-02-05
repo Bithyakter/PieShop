@@ -5,6 +5,9 @@ using PieShop.Models;
 
 namespace PieShop.Controllers
 {
+    /// <summary>
+    /// An Order controller for order create
+    /// </summary>
     [Authorize]
     public class OrderController : Controller
     {
@@ -17,6 +20,7 @@ namespace PieShop.Controllers
             _shoppingCart = shoppingCart;
         }
 
+        #region Checkout
         // GET: /<controller>/
         public IActionResult Checkout()
         {
@@ -42,11 +46,14 @@ namespace PieShop.Controllers
             }
             return View(order);
         }
+        #endregion
 
+        #region CheckoutComplete
         public IActionResult CheckoutComplete()
         {
             ViewBag.CheckoutCompleteMessage = "Thanks for your order. You'll soon enjoy our delicious pies!";
             return View();
         }
+        #endregion
     }
 }
